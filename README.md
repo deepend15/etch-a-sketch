@@ -1,1 +1,1 @@
-# etch-a-sketch
+The intent of this project is to create a mock Etch-a-Sketch / sketchpad that can be used through the browser. Completion of this project will demonstrate knowledge of CSS, Flexbox, and JavaScript.
