@@ -5,6 +5,7 @@ function addSquares(number) {
         square.classList.add("square");
         square.style.flex = `1 1 calc(100% / ${number})`;
         container.appendChild(square);
+        square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = "rgb(76, 72, 72)");
     }
 }
 
