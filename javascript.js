@@ -24,20 +24,22 @@ function addSquares(number) {
 
 addSquares(16);
 
-const button = document.querySelector("button");
+const gridButton = document.querySelector(".grid");
 
 function promptSquares() {
-    let inputtedSquares = Number(prompt("How many squares do you want per row? (e.g., '20' will create a 20x20 grid)\n\nMinimum: 2\nMaximum: 100"));
-    if (inputtedSquares > 100 || inputtedSquares <= 1 || isNaN(inputtedSquares)) {
+    let inputtedSquares = prompt("How many squares do you want per row? (e.g. '20' will create a 20x20 grid)\n\nMinimum: 2\nMaximum: 100");
+    if (inputtedSquares === null) {
+        return;
+    } else if (Number(inputtedSquares) > 100 || Number(inputtedSquares) <= 1 || isNaN(Number(inputtedSquares))) {
         alert("Error: invalid number entered, unable to complete request");
     } else {
         const body = document.querySelector("body");
-        body.removeChild(button.nextElementSibling);
+        body.removeChild(body.lastElementChild);
         const newContainer = document.createElement("div");
         newContainer.classList.add("container");
         body.appendChild(newContainer);
-        addSquares(inputtedSquares);
+        addSquares(Number(inputtedSquares));
     }
 }
 
-button.addEventListener("click", promptSquares);
+gridButton.addEventListener("click", promptSquares);

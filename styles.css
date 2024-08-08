@@ -15,9 +15,18 @@ body {
     margin: 0;
 }
 
-.button {
+.button-container {
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
     margin-top: 20px;
     font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 8px;
 }
 
 .container {
