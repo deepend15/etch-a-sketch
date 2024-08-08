@@ -6,8 +6,14 @@ function addSquares(number) {
         square.style.flex = `1 1 calc(100% / ${number})`;
         container.appendChild(square);
         let randomColor = () => Math.floor(Math.random() * 256);
-        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = "rgb(76, 72, 72)");
-        square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`);
+        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `rgb(76, 72, 72)`);
+        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`);
+        let count = 0;
+        square.addEventListener("mouseenter", function(e) {
+            count++;
+            e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()}, calc(${count / 10}))`;
+            console.log(count);
+        });
     }
 }
 
