@@ -11,9 +11,14 @@ function addSquares(number) {
         let count = 0;
         square.addEventListener("mouseenter", function(e) {
             count++;
-            e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()}, calc(${count / 10}))`;
+            e.target.style.backgroundColor = `rgb(76, 72, 72, calc(${count / 10}))`;
             console.log(count);
         });
+        // square.addEventListener("mouseenter", function(e) {
+        //     count++;
+        //     e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()}, calc(${count / 10}))`;
+        //     console.log(count);
+        // });
     }
 }
 
