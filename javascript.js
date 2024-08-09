@@ -13,7 +13,7 @@ addSquares(16);
 let squares = document.querySelectorAll(".square");
 
 function addBlack(e) {
-    e.target.style.backgroundColor = 'black';
+    e.target.style.backgroundColor = "black";
 }
 
 squares.forEach((square) => {
@@ -33,7 +33,7 @@ function toggleBlack() {
     checkRainbow();
     blackButton.classList.toggle("black-on");
     blackButton.classList.toggle("black-off");
-    if (blackButton.className === 'black black-on') {
+    if (blackButton.className === "black black-on") {
         blackButton.textContent = "Black: on";
         squares.forEach((square) => {
             square.addEventListener("mouseenter", addBlack, true);
@@ -66,7 +66,7 @@ function toggleRainbow() {
     checkBlack();
     rainbowButton.classList.toggle("rainbow-on");
     rainbowButton.classList.toggle("rainbow-off");
-    if (rainbowButton.className === 'rainbow rainbow-on') {
+    if (rainbowButton.className === "rainbow rainbow-on") {
         rainbowButton.textContent = "Rainbow: on";
         squares.forEach((square) => {
             square.addEventListener("mouseenter", addRainbow, true);
