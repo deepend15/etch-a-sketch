@@ -81,7 +81,14 @@ function toggleRainbow() {
 
 rainbowButton.addEventListener("click", toggleRainbow);
 
-// Can't get below to work. Intent is to have a square's background color increase in opacity by 10% every time the mouse hovers over that particular square. The code below adds and removes the listener event successfully (with some minor kinks that will need to be worked out), however the opacity increases by 10% when the mouse hovers over every adjacent square. I.e. the opacity increase is not local/exclusive to a particular square; it increases across all squares. Have tried modifications and am stumped.
+// Can't get below to work. Intent is to have a square's background color
+// increase in opacity by 10% every time the mouse hovers over that
+// particular square. The code below adds and removes the listener event
+// successfully (with some minor kinks that will need to be worked out),
+// however the opacity increases by 10% when the mouse hovers over every
+// adjacent square. I.e. the opacity increase is not local/exclusive to a
+// particular square; it increases across all squares. Have tried
+// modifications and am stumped.
 
 const opacityButton = document.querySelector(".opacity");
 
