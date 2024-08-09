@@ -102,10 +102,12 @@ function toggleOpacity() {
             opacityButton.textContent = 'Opacity: off';
             square.removeEventListener("mouseenter", addOpacity, true);
         }
-    })
+    });
 }
 
 opacityButton.addEventListener("click", toggleOpacity);
+
+// end non-working code
 
 const gridButton = document.querySelector(".grid-button");
 
