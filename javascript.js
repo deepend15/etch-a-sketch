@@ -35,8 +35,16 @@ squares.forEach((square) => {
 });
 
 const blackButton = document.querySelector(".black");
-    
+
 function toggleBlack() {
+    function checkRainbow() {
+        if (rainbowButton.className === "rainbow rainbow-on") {
+            toggleRainbow();
+        } else {
+            return;
+        }
+    }
+    checkRainbow();
     blackButton.classList.toggle("black-on");
     blackButton.classList.toggle("black-off");
     if (blackButton.className === 'black black-on') {
@@ -53,6 +61,39 @@ function toggleBlack() {
 } 
 
 blackButton.addEventListener("click", toggleBlack);
+
+const rainbowButton = document.querySelector(".rainbow");
+
+function addRainbow(e) {
+    let randomColor = () => Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+}
+
+function toggleRainbow() {
+    function checkBlack() {
+        if (blackButton.className === "black black-on") {
+            toggleBlack();
+        } else {
+            return;
+        }
+    }
+    checkBlack();
+    rainbowButton.classList.toggle("rainbow-on");
+    rainbowButton.classList.toggle("rainbow-off");
+    if (rainbowButton.className === 'rainbow rainbow-on') {
+        rainbowButton.textContent = "Rainbow: on";
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addRainbow, true);
+        });
+    } else {
+        rainbowButton.textContent = "Rainbow: off";
+        squares.forEach((square) => {
+            square.removeEventListener("mouseenter", addRainbow, true);
+        });
+    }
+}
+
+rainbowButton.addEventListener("click", toggleRainbow);
 
 const gridButton = document.querySelector(".grid-button");
 
@@ -73,6 +114,10 @@ function promptSquares() {
         if (blackButton.className === "black black-on") {
             squares.forEach((square) => {
                 square.addEventListener("mouseenter", addBlack, true);
+            });
+        } else if (rainbowButton.className === "rainbow rainbow-on") {
+            squares.forEach((square) => {
+                square.addEventListener("mouseenter", addRainbow, true);
             });
         } else {
             return;
