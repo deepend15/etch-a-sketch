@@ -5,10 +5,10 @@ function addSquares(number) {
         square.classList.add("square");
         square.style.flex = `1 1 calc(100% / ${number})`;
         container.appendChild(square);
-        square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `black`);
-        let randomColor = () => Math.floor(Math.random() * 256);
+        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `black`);
+        // let randomColor = () => Math.floor(Math.random() * 256);
         // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`);
-        let count = 0;
+        // let count = 0;
         // square.addEventListener("mouseenter", function(e) {
         //     count++;
         //     e.target.style.backgroundColor = `rgb(0, 0, 0, calc(${count / 10}))`;
@@ -24,7 +24,37 @@ function addSquares(number) {
 
 addSquares(16);
 
-const gridButton = document.querySelector(".grid");
+let squares = document.querySelectorAll(".square");
+
+function addBlack(e) {
+    e.target.style.backgroundColor = 'black';
+}
+
+squares.forEach((square) => {
+    square.addEventListener("mouseenter", addBlack, true);
+});
+
+const blackButton = document.querySelector(".black");
+    
+function toggleBlack() {
+    blackButton.classList.toggle("black-on");
+    blackButton.classList.toggle("black-off");
+    if (blackButton.className === 'black black-on') {
+        blackButton.textContent = "Black: on";
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addBlack, true);
+        });
+    } else {
+        blackButton.textContent = "Black: off";
+        squares.forEach((square) => {
+            square.removeEventListener("mouseenter", addBlack, true);
+        });
+    }
+} 
+
+blackButton.addEventListener("click", toggleBlack);
+
+const gridButton = document.querySelector(".grid-button");
 
 function promptSquares() {
     let inputtedSquares = prompt("How many squares do you want per row? (e.g. '20' will create a 20x20 grid)\n\nMinimum: 2\nMaximum: 100");
@@ -39,7 +69,15 @@ function promptSquares() {
         newContainer.classList.add("container");
         body.appendChild(newContainer);
         addSquares(Number(inputtedSquares));
-    }
+        squares = document.querySelectorAll(".square");
+        if (blackButton.className === "black black-on") {
+            squares.forEach((square) => {
+                square.addEventListener("mouseenter", addBlack, true);
+            });
+        } else {
+            return;
+        };
+    }   
 }
 
 gridButton.addEventListener("click", promptSquares);
