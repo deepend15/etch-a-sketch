@@ -5,20 +5,6 @@ function addSquares(number) {
         square.classList.add("square");
         square.style.flex = `1 1 calc(100% / ${number})`;
         container.appendChild(square);
-        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `black`);
-        // let randomColor = () => Math.floor(Math.random() * 256);
-        // square.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`);
-        // let count = 0;
-        // square.addEventListener("mouseenter", function(e) {
-        //     count++;
-        //     e.target.style.backgroundColor = `rgb(0, 0, 0, calc(${count / 10}))`;
-        //     console.log(count);
-        // });
-        // square.addEventListener("mouseenter", function(e) {
-        //     count++;
-        //     e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()}, calc(${count / 10}))`;
-        //     console.log(count);
-        // });
     }
 }
 
