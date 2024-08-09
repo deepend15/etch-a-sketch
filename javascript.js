@@ -13,7 +13,7 @@ addSquares(16);
 let squares = document.querySelectorAll(".square");
 
 function addBlack(e) {
-    e.target.style.backgroundColor = 'black';
+    e.target.style.backgroundColor = "black";
 }
 
 squares.forEach((square) => {
@@ -33,7 +33,7 @@ function toggleBlack() {
     checkRainbow();
     blackButton.classList.toggle("black-on");
     blackButton.classList.toggle("black-off");
-    if (blackButton.className === 'black black-on') {
+    if (blackButton.className === "black black-on") {
         blackButton.textContent = "Black: on";
         squares.forEach((square) => {
             square.addEventListener("mouseenter", addBlack, true);
@@ -66,7 +66,7 @@ function toggleRainbow() {
     checkBlack();
     rainbowButton.classList.toggle("rainbow-on");
     rainbowButton.classList.toggle("rainbow-off");
-    if (rainbowButton.className === 'rainbow rainbow-on') {
+    if (rainbowButton.className === "rainbow rainbow-on") {
         rainbowButton.textContent = "Rainbow: on";
         squares.forEach((square) => {
             square.addEventListener("mouseenter", addRainbow, true);
@@ -88,7 +88,9 @@ rainbowButton.addEventListener("click", toggleRainbow);
 // however the opacity increases by 10% when the mouse hovers over every
 // adjacent square. I.e. the opacity increase is not local/exclusive to a
 // particular square; it increases across all squares. Have tried
-// modifications and am stumped.
+// modifications, such as declaring the 'count' variable and the
+// 'addOpacity' function inside of 'squares.forEach' function, but then I
+// couldn't remove the event listener. Pretty stumped.
 
 const opacityButton = document.querySelector(".opacity");
 
@@ -102,11 +104,11 @@ function toggleOpacity() {
         console.log(count);
     }
     squares.forEach((square) => {
-        if (opacityButton.className === 'opacity opacity-on') {
-            opacityButton.textContent = 'Opacity: on';
+        if (opacityButton.className === "opacity opacity-on") {
+            opacityButton.textContent = "Opacity: on";
             square.addEventListener("mouseenter", addOpacity, true);
         } else {
-            opacityButton.textContent = 'Opacity: off';
+            opacityButton.textContent = "Opacity: off";
             square.removeEventListener("mouseenter", addOpacity, true);
         }
     });
