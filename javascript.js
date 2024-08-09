@@ -126,3 +126,29 @@ function promptSquares() {
 }
 
 gridButton.addEventListener("click", promptSquares);
+
+const clearButton = document.querySelector(".clear-button");
+
+function clearGrid() {
+    let numberOfSquares = squares.length;
+    const body = document.querySelector("body");
+    body.removeChild(body.lastElementChild);
+    const newContainer = document.createElement("div");
+    newContainer.classList.add("container");
+    body.appendChild(newContainer);
+    addSquares(Math.sqrt(numberOfSquares));
+    squares = document.querySelectorAll(".square");
+    if (blackButton.className === "black black-on") {
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addBlack, true);
+        });
+    } else if (rainbowButton.className === "rainbow rainbow-on") {
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addRainbow, true);
+        });
+    } else {
+        return;
+    };
+}
+
+clearButton.addEventListener("click", clearGrid);
