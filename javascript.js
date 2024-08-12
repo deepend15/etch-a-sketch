@@ -81,6 +81,27 @@ function toggleRainbow() {
 
 rainbowButton.addEventListener("click", toggleRainbow);
 
+const opacityButton = document.querySelector(".opacity-button");
+
+function promptOpacity() {
+    let chosenOpacity = prompt("Enter an opacity level between 0.0 and 1.0 (the closer to 1.0, the darker each square's shade will be). \n\nEnter 1 to reset; 0 for whitespace");
+    if (chosenOpacity === null) {
+        return;
+    } else if (Number(chosenOpacity) < 0 || Number(chosenOpacity) > 1 || isNaN(Number(chosenOpacity))) {
+        alert("Error: invalid number entered, unable to complete request");
+    } else {
+        opacityButton.textContent = `Opacity: ${Number(chosenOpacity)}`;
+        function addOpacity(e) {
+            e.target.style.opacity = `${Number(chosenOpacity)}`;
+        };
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addOpacity, true);
+        });
+    };
+}
+
+opacityButton.addEventListener("click", promptOpacity);
+
 const gridButton = document.querySelector(".grid-button");
 
 function promptSquares() {
@@ -105,8 +126,15 @@ function promptSquares() {
             squares.forEach((square) => {
                 square.addEventListener("mouseenter", addRainbow, true);
             });
-        } else {
-            return;
+        };
+        if (opacityButton.textContent !== "Opacity") {
+            let currentOpacity = opacityButton.textContent.slice(9);
+            function addOpacity(e) {
+                e.target.style.opacity = `${Number(currentOpacity)}`;
+            };
+            squares.forEach((square) => {
+                square.addEventListener("mouseenter", addOpacity, true);
+            });
         };
     }   
 }
@@ -132,8 +160,15 @@ function clearGrid() {
         squares.forEach((square) => {
             square.addEventListener("mouseenter", addRainbow, true);
         });
-    } else {
-        return;
+    };
+    if (opacityButton.textContent !== "Opacity") {
+        let currentOpacity = opacityButton.textContent.slice(9);
+        function addOpacity(e) {
+            e.target.style.opacity = `${Number(currentOpacity)}`;
+        };
+        squares.forEach((square) => {
+            square.addEventListener("mouseenter", addOpacity, true);
+        });
     };
 }
 
