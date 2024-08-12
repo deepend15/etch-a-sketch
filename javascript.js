@@ -14,6 +14,7 @@ let squares = document.querySelectorAll(".square");
 
 function addBlack(e) {
     e.target.style.backgroundColor = "black";
+    let currentOpacity = e.target.style.opacity;
 }
 
 squares.forEach((square) => {
@@ -83,26 +84,23 @@ rainbowButton.addEventListener("click", toggleRainbow);
 
 // Can't get below to work. Intent is to have a square's background color
 // increase in opacity by 10% every time the mouse hovers over that
-// particular square. The code below adds and removes the listener event
-// successfully (with some minor kinks that will need to be worked out),
-// however the opacity increases by 10% when the mouse hovers over every
-// adjacent square. I.e. the opacity increase is not local/exclusive to a
-// particular square; it increases across all squares. Have tried
-// modifications, such as declaring the 'count' variable and the
-// 'addOpacity' function inside of 'squares.forEach' function, but then I
-// couldn't remove the event listener. Pretty stumped.
+// particular square. The code below nearly achieves this (with additional
+// tweaking needed), but if you toggle opacity on, then off, hovering over
+// squares that previously had varying opacity won't change them to full
+// opacity, because they already have color in them (which is what the
+// remaining active listener event 'addColor' calls for).
 
 const opacityButton = document.querySelector(".opacity");
+
+function addOpacity(e) {
+    let currentOpacity = Number(e.target.style.opacity);
+    e.target.style.opacity = currentOpacity + 0.1;
+    console.log(e.target.style.opacity);
+}
 
 function toggleOpacity() {
     opacityButton.classList.toggle("opacity-on");
     opacityButton.classList.toggle("opacity-off");
-    let count = 0;
-    function addOpacity(e) {
-        count++;
-        e.target.style.opacity = `calc(${count} / 10)`;
-        console.log(count);
-    }
     squares.forEach((square) => {
         if (opacityButton.className === "opacity opacity-on") {
             opacityButton.textContent = "Opacity: on";
