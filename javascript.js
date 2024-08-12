@@ -14,7 +14,6 @@ let squares = document.querySelectorAll(".square");
 
 function addBlack(e) {
     e.target.style.backgroundColor = "black";
-    let currentOpacity = e.target.style.opacity;
 }
 
 squares.forEach((square) => {
